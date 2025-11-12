@@ -1,2 +1,10 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui"{
+  themes: light --default, dark --prefersdark;
+  themes: light --default;
+}
+
+ul li a.active{
+    color: #a64259;
+    border-bottom: 2px solid #a64259;
+}
