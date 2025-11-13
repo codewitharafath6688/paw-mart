@@ -1,16 +1,49 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../assets/logo.png";
+import { AuthContext } from "../Context/AuthContext";
 
 const Header = () => {
+  const { user, logOutUser } = use(AuthContext);
+  console.log(user);
+  const handleSignOut = () => {
+    logOutUser()
+      .then(window.location.reload())
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const links = (
     <>
       <li>
-        <NavLink to="/" className="font-semibold">Home</NavLink>
+        <NavLink to="/" className="font-semibold">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/petSupplies" className="font-semibold">Pets & Supplies</NavLink>
+        <NavLink to="/petSupplies" className="font-semibold">
+          Pets & Supplies
+        </NavLink>
       </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/addListing" className="font-semibold">
+              Add Listing
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/myListing" className="font-semibold">
+              My Listings
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/myOrders" className="font-semibold">
+            My Orders
+          </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -43,19 +76,33 @@ const Header = () => {
         </div>
         <div className="flex items-center">
           <img className="w-[22%] md:w-[9%]" src={Logo} />
-          <a href="/" className="font-bold text-2xl text-[#a64259]">PawMart</a>
+          <a href="/" className="font-bold text-2xl text-[#a64259]">
+            PawMart
+          </a>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu-horizontal gap-5 px-1">{links}</ul>
+        <ul className="menu-horizontal gap-5">{links}</ul>
       </div>
       <div className="navbar-end flex gap-5">
-        <Link to="/login" className="btn bg-[#a64259] text-white">
-          Login
-        </Link>
-        <Link to="/register" className="btn bg-[#a64259] text-white">
-          SignUp
-        </Link>
+        {user ? (
+          <button
+            onClick={handleSignOut}
+            className="btn bg-[#a64259] text-white"
+            type="button"
+          >
+            SignOut
+          </button>
+        ) : (
+          <>
+            <Link to="/login" className="btn bg-[#a64259] text-white">
+              Login
+            </Link>
+            <Link to="/register" className="btn  bg-[#a64259] text-white">
+              SignUp
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

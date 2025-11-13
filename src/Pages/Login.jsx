@@ -1,8 +1,10 @@
 import React, { use } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 
 const Login = () => {
+  const location = useLocation();
+  const naviagte = useNavigate()
   const { logInUser, signInUserGoogle } = use(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
@@ -12,6 +14,8 @@ const Login = () => {
     logInUser(email, password)
       .then((result) => {
         console.log(result.user);
+        e.target.reset();
+        naviagte(location.state || '/')
       })
       .catch((error) => {
         console.log(error.message);
@@ -21,6 +25,7 @@ const Login = () => {
     signInUserGoogle()
       .then((result) => {
         console.log(result.user);
+        naviagte(location.state || '/')
       })
       .catch((error) => {
         console.log(error.message);
