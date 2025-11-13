@@ -4,6 +4,9 @@ import "swiper/css";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Latest from "../LayOut.jsx/Latest";
+
+const latestPromise = fetch('http://localhost:3000/pets').then(res => res.json())
 
 const Home = () => {
   return (
@@ -102,6 +105,10 @@ const Home = () => {
             <h3 className="text-white font-bold">Pet Care Products</h3>
           </div>
         </div>
+      </div>
+      <div className="my-10 w-11/12 mx-auto">
+        <h2 className="text-xl text-center mb-4 font-semibold">Recent Listings</h2>
+        <Latest latestPromise={latestPromise}></Latest>
       </div>
     </div>
   );
