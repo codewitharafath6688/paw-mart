@@ -1,26 +1,61 @@
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const {createUser, signInUserGoogle} = use(AuthContext);
+  const handleRegister = e => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const image = e.target.image.value;
+    const password = e.target.password.value;
+    console.log(name ,email, image, password);
+    createUser(email, password)
+     .then(result => {
+        const profile = {
+            displayName : name,
+            photoURL : image
+        }
+        updateProfile(result.user, profile);
+        console.log(result.user);
+     })
+     .catch(error => {
+        console.log(error.message);
+     })
+  }  
+  const handleGoogleUser = () => {
+    signInUserGoogle()
+     .then(result => {
+        console.log(result.user);
+     })
+     .catch(error => {
+        console.log(error.message);
+     })
+  }
   return (
     <div className="w-[350px] mx-auto my-10">
-      <form>
+      <form onSubmit={handleRegister}>
         <fieldset className="fieldset border-2 border-[#a64259] bg-base-200 rounded-box w-xs p-4">
           <legend className="fieldset-legend text-xl text-[#a64259] font-bold">
             SignUp
           </legend>
 
+          <label className="label">Name</label>
+          <input type="text" className="input" name="name" placeholder="Name" />
+
           <label className="label">Email</label>
-          <input type="email" className="input" placeholder="Email" />
+          <input type="email" className="input" name="email" placeholder="Email" />
 
           <label className="label">Photo URL</label>
-          <input type="text" className="input" placeholder="Photo URL" />
+          <input type="text" className="input" name="image" placeholder="Photo URL" />
 
           <label className="label">Password</label>
-          <input type="password" className="input" placeholder="Password" />
+          <input type="password" className="input" name="password" placeholder="Password" />
 
           <button className="btn bg-[#a64259] text-white mt-4">SignUp</button>
-          <button className="btn border-2 border-[#a64259] hover:bg-[#a64259] mt-3 hover:text-white bg-white text-black">
+          <button onClick={handleGoogleUser} className="btn border-2 border-[#a64259] hover:bg-[#a64259] mt-3 hover:text-white bg-white text-black">
             <svg
               aria-label="Google logo"
               width="16"
@@ -49,7 +84,7 @@ const Register = () => {
                 ></path>
               </g>
             </svg>
-            Login with Google
+            Continue with Google
           </button>
           <p className="text-center mt-5">
             Already have an account?{" "}
