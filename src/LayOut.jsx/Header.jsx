@@ -39,8 +39,8 @@ const Header = () => {
           </li>
           <li>
             <NavLink to="/myOrders" className="font-semibold">
-            My Orders
-          </NavLink>
+              My Orders
+            </NavLink>
           </li>
         </>
       )}
@@ -86,13 +86,16 @@ const Header = () => {
       </div>
       <div className="navbar-end flex gap-5">
         {user ? (
-          <button
-            onClick={handleSignOut}
-            className="btn bg-[#a64259] text-white"
-            type="button"
-          >
-            SignOut
-          </button>
+          <>
+            <img className="w-8 h-8 rounded-full" src={user.photoURL}/>
+            <button
+              onClick={handleSignOut}
+              className="btn bg-[#a64259] text-white"
+              type="button"
+            >
+              SignOut
+            </button>
+          </>
         ) : (
           <>
             <Link to="/login" className="btn bg-[#a64259] text-white">
