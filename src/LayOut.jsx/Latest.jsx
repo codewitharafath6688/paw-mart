@@ -5,7 +5,7 @@ const Latest = ({ latestPromise }) => {
   const latestListing = use(latestPromise);
   console.log(latestListing);
   return (
-    <div className=" grid grid-cols-3 gap-5" >
+    <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" >
       {latestListing.map((list) => (
         <div className="bg-[#cbcbcb] p-4 rounded-xl" key={list._id}>
           <div>

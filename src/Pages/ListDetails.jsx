@@ -62,13 +62,13 @@ const ListDetails = () => {
 
   return (
     <div className="bg-base-200 min-h-screen">
-      <div className="flex p-3 gap-5">
+      <div className="flex flex-col md:flex-row p-3 gap-5">
         <img
           src={singleList.pet_image}
           className="w-[40%] rounded-lg shadow-2xl"
         />
         <div className="*:mt-4">
-          <h2 className="text-5xl font-bold">{singleList.name}</h2>
+          <h2 className="text-2xl lg:text-5xl font-bold ">{singleList.name}</h2>
           <h3 className="font-semibold">{singleList.location}</h3>
           <h3 className="font-semibold">Price: $ {singleList.price}</h3>
           <h3 className="font-semibold">Category: {singleList.category}</h3>

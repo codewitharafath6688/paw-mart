@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../Context/AuthContext";
 
 const PetSupplies = () => {
   const [alllist, setAllList] = useState([]);
@@ -9,7 +10,7 @@ const PetSupplies = () => {
       .then((data) => setAllList(data));
   }, []);
   return (
-    <div className="grid grid-cols-3 gap-5 my-10 w-11/12 mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10 w-11/12 mx-auto">
       {alllist.map((list) => (
         <div className="bg-[#cbcbcb] p-4 rounded-xl" key={list._id}>
           <div>

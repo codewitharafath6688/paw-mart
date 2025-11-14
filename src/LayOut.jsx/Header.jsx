@@ -69,7 +69,7 @@ const Header = () => {
           </div>
           <ul
             tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100  z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100  z-1000 mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
@@ -87,7 +87,7 @@ const Header = () => {
       <div className="navbar-end flex gap-5">
         {user ? (
           <>
-            <img className="w-8 h-8 rounded-full" src={user.photoURL}/>
+            <img className="w-8 h-8 rounded-full -mr-4 lg:mr-0" src={user.photoURL}/>
             <button
               onClick={handleSignOut}
               className="btn bg-[#a64259] text-white"
