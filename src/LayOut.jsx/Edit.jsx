@@ -1,10 +1,12 @@
 import React from "react";
 import { useLoaderData } from "react-router";
+import Swal from "sweetalert2";
 
 const Edit = () => {
-  const {name, category, price, _id, location, image, describe} = useLoaderData();
+  const { name, category, price, _id, location, image, describe } =
+    useLoaderData();
 
-  const handleUpdate = e => {
+  const handleUpdate = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const image = e.target.image.value;
@@ -13,26 +15,35 @@ const Edit = () => {
     const location = e.target.location.value;
     const describe = e.target.describe.value;
     const updateList = {
-        _id,
-        name,
-        image,
-        price,
-        location,
-        describe,
-        category
-    }
-    fetch(``,{
-        method:"PATCH",
-        headers: {
-            "content-type" : "application/json"
-        },
-        body: JSON.stringify(updateList)
+      _id,
+      name,
+      image,
+      price,
+      location,
+      describe,
+      category,
+    };
+    fetch(`http://localhost:3000/addList/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateList),
     })
-     .then(res => res.json())
-     .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-     })
-  }
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
   return (
     <div className="w-[300px] mx-auto my-5">
       <form onSubmit={handleUpdate}>
