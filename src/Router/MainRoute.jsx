@@ -10,6 +10,7 @@ import AddListing from "../Pages/AddListing";
 import MyOrders from "../Pages/MyOrders";
 import PrivateRoute from "../PrivateRouter/PrivateRoute";
 import Edit from "../LayOut.jsx/Edit";
+import ListDetails from "../Pages/ListDetails";
 
 export let router = createBrowserRouter([
   {
@@ -68,6 +69,11 @@ export let router = createBrowserRouter([
         path:"/edit/:id",
         loader: ({params}) => fetch(`http://localhost:3000/addList/${params.id}`),
         element:<PrivateRoute><Edit/></PrivateRoute>
+      },
+      {
+        path:"/listDetails/:id",
+        loader:({params}) => fetch(`http://localhost:3000/allpets/${params.id}`),
+        element:<PrivateRoute><ListDetails/></PrivateRoute>
       }
     ],
   },

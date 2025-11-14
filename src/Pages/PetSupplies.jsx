@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const PetSupplies = () => {
   const [alllist, setAllList] = useState([]);
@@ -16,10 +17,12 @@ const PetSupplies = () => {
               <img className="rounded-xl" src={list.pet_image} />
             </div>
             <h3 className="mt-3 font-bold">{list.name}</h3>
-            <p className="mt-3">$ {list.price}</p>
-            <button className="btn mt-3 text-white bg-[#a64259]">
+            <h3 className="mt-3 font-bold text-gray-500 text-[12px]">Category: {list.category}</h3>
+            <h3 className="mt-3 font-bold text-gray-500 text-[12px]"> {list.location}</h3>
+            <p className="mt-3 font-semibold">$ {list.price}</p>
+            <Link to={`/listDetails/${list._id}`} className="btn mt-3 text-white bg-[#a64259]">
               View Details
-            </button>
+            </Link>
           </div>
         </div>
       ))}

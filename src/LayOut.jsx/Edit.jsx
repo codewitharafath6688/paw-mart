@@ -37,7 +37,7 @@ const Edit = () => {
           Swal.fire({
             position: "top-center",
             icon: "success",
-            title: "Your work has been saved",
+            title: "Your update has been saved",
             showConfirmButton: false,
             timer: 1500,
           });
