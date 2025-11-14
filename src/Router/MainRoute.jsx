@@ -9,6 +9,7 @@ import MyListing from "../Pages/MyListing";
 import AddListing from "../Pages/AddListing";
 import MyOrders from "../Pages/MyOrders";
 import PrivateRoute from "../PrivateRouter/PrivateRoute";
+import Edit from "../LayOut.jsx/Edit";
 
 export let router = createBrowserRouter([
   {
@@ -63,6 +64,11 @@ export let router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path:"/edit/:id",
+        loader: ({params}) => fetch(`http://localhost:3000/addList/${params.id}`),
+        element:<PrivateRoute><Edit/></PrivateRoute>
+      }
     ],
   },
   {
