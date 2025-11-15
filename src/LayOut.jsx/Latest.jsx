@@ -16,7 +16,7 @@ const Latest = ({ latestPromise }) => {
             <h3 className="mt-3 font-bold text-gray-500 text-[12px]">Category: {list.category}</h3>
             <h3 className="mt-3 font-bold text-gray-500 text-[12px]"> {list.location}</h3>
             <p className="mt-3 font-semibold">$ {list.price}</p>
-            <Link to={`/listDetails/${list._id}`} className="btn mt-3 text-white bg-[#a64259]">
+            <Link to={`/listDetails/${list._id}`} className="btn border-0 mt-3 text-white bg-[#a64259]">
               View Details
             </Link>
           </div>

@@ -61,7 +61,7 @@ const ListDetails = () => {
   };
 
   return (
-    <div className="bg-base-200 min-h-screen">
+    <div className="bg-base-200 min-h-screen mt-10">
       <div className="flex flex-col md:flex-row p-3 gap-5">
         <img
           src={singleList.pet_image}

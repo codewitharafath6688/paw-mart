@@ -1,9 +1,11 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthContext";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
   const {createUser, signInUserGoogle} = use(AuthContext);
   const handleRegister = e => {
     e.preventDefault();
@@ -12,6 +14,13 @@ const Register = () => {
     const image = e.target.image.value;
     const password = e.target.password.value;
     console.log(name ,email, image, password);
+    const passPattern = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    if(!passPattern.test(password)){
+      setError("Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long");
+      return;
+    }
+    setError('');
+    setSuccess('');
     createUser(email, password)
      .then(result => {
         const profile = {
@@ -20,9 +29,12 @@ const Register = () => {
         }
         updateProfile(result.user, profile);
         console.log(result.user);
+        setSuccess("Succesfully created account")
+        e.target.reset();
      })
      .catch(error => {
         console.log(error.message);
+        setError(error.message)
      })
   }  
   const handleGoogleUser = () => {
@@ -35,7 +47,7 @@ const Register = () => {
      })
   }
   return (
-    <div className="w-[350px] mx-auto my-10">
+    <div className="w-[350px] mx-auto mt-2 mb-12">
       <form onSubmit={handleRegister}>
         <fieldset className="fieldset border-2 border-[#a64259] bg-base-200 rounded-box w-xs p-4">
           <legend className="fieldset-legend text-xl text-[#a64259] font-bold">
@@ -86,6 +98,8 @@ const Register = () => {
             </svg>
             Continue with Google
           </button>
+          {error && <p className="text-[red]">{error}</p>}
+          {success && <p className="text-[green]">{success}</p>}
           <p className="text-center mt-5">
             Already have an account?{" "}
             <NavLink

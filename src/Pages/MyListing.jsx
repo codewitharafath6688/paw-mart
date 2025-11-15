@@ -48,7 +48,7 @@ const MyListing = () => {
     });
   };
   return (
-  <div className="w-11/12 min-h-[349px] mx-auto">
+  <div className="w-11/12 min-h-[309px] mx-auto mt-10">
     {/* Desktop/Table View */}
     <div className="hidden md:block overflow-x-auto">
       <table className="table w-full">

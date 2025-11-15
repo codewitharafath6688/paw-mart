@@ -11,6 +11,10 @@ import MyOrders from "../Pages/MyOrders";
 import PrivateRoute from "../PrivateRouter/PrivateRoute";
 import Edit from "../LayOut.jsx/Edit";
 import ListDetails from "../Pages/ListDetails";
+import Adoption from "../Pages/Adoption";
+import PetFood from "../Pages/PetFood";
+import Accesories from "../Pages/Accesories";
+import CareProdcuts from "../Pages/CareProdcuts";
 
 export let router = createBrowserRouter([
   {
@@ -74,6 +78,22 @@ export let router = createBrowserRouter([
         path:"/listDetails/:id",
         loader:({params}) => fetch(`http://localhost:3000/allpets/${params.id}`),
         element:<PrivateRoute><ListDetails/></PrivateRoute>
+      },
+      {
+        path:"/adoption",
+        element:<PrivateRoute><Adoption/></PrivateRoute>
+      },
+      {
+        path:"/petFood",
+        element:<PrivateRoute><PetFood/></PrivateRoute>
+      },
+      {
+        path:"/accesories",
+        element:<PrivateRoute><Accesories/></PrivateRoute>
+      },
+      {
+        path:"/careProducts",
+        element:<PrivateRoute><CareProdcuts/></PrivateRoute>
       }
     ],
   },

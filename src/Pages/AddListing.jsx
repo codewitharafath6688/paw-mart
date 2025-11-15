@@ -26,7 +26,7 @@ const AddListing = () => {
       location: location,
       describe: describe,
       ownerEmail: ownerEmail,
-      ownerName: ownerName
+      ownerName: ownerName,
     };
 
     fetch("http://localhost:3000/addList", {
@@ -53,76 +53,82 @@ const AddListing = () => {
   };
 
   return (
-    <div className="w-[350px] mx-auto my-5">
-      <form onSubmit={handleSubmit}>
-        <fieldset className="fieldset bg-base-200 border-2 border-[#a64259] rounded-box w-xs p-4">
-          <legend className="fieldset-legend text-xl text-[#a64259]">
-            Add Listing
-          </legend>
+    <div className="w-full flex justify-center py-10 px-4">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-base-200 border-2 border-[#a64259] rounded-2xl p-6 shadow"
+      >
+        <h2 className="text-2xl font-semibold text-[#a64259] mb-4 text-center">
+          Add Listing
+        </h2>
 
-          <label className="label">Pet Name</label>
-          <input
-            type="text"
-            className="input"
-            name="name"
-            placeholder="Pet Name"
-          />
+        <label className="label">Pet Name</label>
+        <input
+          type="text"
+          className="input input-bordered w-full"
+          name="name"
+          placeholder="Pet Name"
+        />
 
-          <label className="label">Pet Image URL</label>
-          <input
-            type="text"
-            className="input"
-            name="image"
-            placeholder="Pet Image URL"
-          />
+        <label className="label">Pet Image URL</label>
+        <input
+          type="text"
+          className="input input-bordered w-full"
+          name="image"
+          placeholder="Pet Image URL"
+        />
 
-          <label className="label">Price</label>
-          <input
-            type="text"
-            className="input"
-            name="price"
-            placeholder="Price"
-          />
+        <label className="label">Price</label>
+        <input
+          type="text"
+          className="input input-bordered w-full"
+          name="price"
+          placeholder="Price"
+        />
 
-          <label className="label">Category</label>
-          <input
-            type="text"
-            className="input"
-            name="category"
-            placeholder="Type your Category"
-          />
+        <label className="label">Category</label>
+        <input
+          type="text"
+          className="input input-bordered w-full"
+          name="category"
+          placeholder="Category"
+        />
 
-          <label className="label">Location</label>
-          <input
-            type="text"
-            className="input"
-            name="location"
-            placeholder="Location"
-          />
+        <label className="label">Location</label>
+        <input
+          type="text"
+          className="input input-bordered w-full"
+          name="location"
+          placeholder="Location"
+        />
 
-          <label className="label">Description</label>
-          <textarea className="border p-3 border-gray-300" name="describe"></textarea>
+        <label className="label">Description</label>
+        <textarea
+          className="textarea textarea-bordered w-full"
+          name="describe"
+          placeholder="Write details..."
+          rows={4}
+        ></textarea>
 
-          <label className="label">Owner's Email</label>
-          <input
-            type="email"
-            className="input"
-            name="ownerEmail"
-            defaultValue={user.email}
-            readOnly
-          />
+        <label className="label">Owner's Email</label>
+        <input
+          type="email"
+          className="input input-bordered w-full bg-gray-100"
+          name="ownerEmail"
+          defaultValue={user.email}
+          readOnly
+        />
 
-          <label className="label">Owner's Name</label>
-          <input
-            type="text"
-            className="input"
-            name="ownerName"
-            defaultValue={user.displayName}
-            readOnly
-          />
+        <label className="label">Owner's Name</label>
+        <input
+          type="text"
+          className="input input-bordered w-full bg-gray-100"
+          name="ownerName"
+          defaultValue={user.displayName}
+          readOnly
+        />
 
-          <button className="btn bg-[#a64259] text-white">Add</button>
-        </fieldset>
+        <button className="btn bg-[#a64259] text-white w-full mt-4">Add</button>
       </form>
     </div>
   );
