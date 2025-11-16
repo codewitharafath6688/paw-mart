@@ -37,7 +37,7 @@ const ListDetails = () => {
       date: date,
     };
 
-    fetch("http://localhost:3000/order", {
+    fetch("https://paw-mart-api-server-pi.vercel.app/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -23,7 +23,7 @@ const Edit = () => {
       describe,
       category,
     };
-    fetch(`http://localhost:3000/addList/${_id}`, {
+    fetch(`https://paw-mart-api-server-pi.vercel.app/addList/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

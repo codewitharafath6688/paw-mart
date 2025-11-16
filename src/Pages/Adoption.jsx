@@ -4,7 +4,7 @@ import { Link } from "react-router";
 const Adoption = () => {
   const [adop, setAdop] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/allpets")
+    fetch("https://paw-mart-api-server-pi.vercel.app/allpets")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

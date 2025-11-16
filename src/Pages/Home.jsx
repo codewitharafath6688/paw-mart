@@ -8,7 +8,7 @@ import Latest from "../LayOut.jsx/Latest";
 import About from "../LayOut.jsx/About";
 import { Link } from "react-router";
 
-const latestPromise = fetch("http://localhost:3000/pets").then((res) =>
+const latestPromise = fetch("https://paw-mart-api-server-pi.vercel.app/pets").then((res) =>
   res.json()
 );
 

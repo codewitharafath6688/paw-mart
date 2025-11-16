@@ -9,7 +9,7 @@ const MyOrders = () => {
   const [list, setList] = useState([]);
   useEffect(() => {
     if (user?.email) {
-      fetch("http://localhost:3000/order")
+      fetch("https://paw-mart-api-server-pi.vercel.app/order")
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -29,7 +29,7 @@ const MyOrders = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log("Removed");
-        fetch(`http://localhost:3000/order/${_id}`, {
+        fetch(`https://paw-mart-api-server-pi.vercel.app/order/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

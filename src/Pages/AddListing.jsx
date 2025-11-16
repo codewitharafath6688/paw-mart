@@ -29,7 +29,7 @@ const AddListing = () => {
       ownerName: ownerName,
     };
 
-    fetch("http://localhost:3000/addList", {
+    fetch("https://paw-mart-api-server-pi.vercel.app/addList", {
       method: "POST",
       headers: {
         "content-type": "application/json",

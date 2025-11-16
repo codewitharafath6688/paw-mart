@@ -53,7 +53,7 @@ export let router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: async () => {
-          const response = await fetch("http://localhost:3000/allpets");
+          const response = await fetch("https://paw-mart-api-server-pi.vercel.app/allpets");
           if (!response.ok) {
             throw new Error("Failed to fetch pets data");
           }
@@ -71,12 +71,12 @@ export let router = createBrowserRouter([
       },
       {
         path:"/edit/:id",
-        loader: ({params}) => fetch(`http://localhost:3000/addList/${params.id}`),
+        loader: ({params}) => fetch(`https://paw-mart-api-server-pi.vercel.app/addList/${params.id}`),
         element:<PrivateRoute><Edit/></PrivateRoute>
       },
       {
         path:"/listDetails/:id",
-        loader:({params}) => fetch(`http://localhost:3000/allpets/${params.id}`),
+        loader:({params}) => fetch(`https://paw-mart-api-server-pi.vercel.app/allpets/${params.id}`),
         element:<PrivateRoute><ListDetails/></PrivateRoute>
       },
       {

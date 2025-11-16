@@ -9,7 +9,7 @@ const Accesories = () => {
   const [adop, setAdop] = useState([]);
   const [selectedId, setSelectedId] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:3000/allpets")
+    fetch("https://paw-mart-api-server-pi.vercel.app/allpets")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -42,7 +42,7 @@ const Accesories = () => {
       date: date,
     };
 
-    fetch("http://localhost:3000/order", {
+    fetch("https://paw-mart-api-server-pi.vercel.app/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",

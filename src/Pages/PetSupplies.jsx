@@ -6,7 +6,7 @@ const PetSupplies = () => {
   const [query, setQuery] = useState("");
   const [alllist, setAllList] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/allpets")
+    fetch("https://paw-mart-api-server-pi.vercel.app/allpets")
       .then((res) => res.json())
       .then((data) => setAllList(data));
   }, []);
